@@ -3,7 +3,7 @@ const project = document.querySelector(".project");
 const details = document.querySelector(".details");
 const box = document.querySelector(".box-1");
 const circle = document.getElementById("circle");
-
+const darkmodeswitch = document.querySelector('.darkmodeswitch')
 /* on load */
 
 const x = window.matchMedia("(max-width: 420px)");
@@ -23,7 +23,7 @@ if (!x.matches) {
 
   setTimeout(function () {
     anime({
-      targets: " .box-container .box-1",
+      targets: " .box-container .box-1, .darkmodeswitch ",
       translateY: "-100vh",
 
       delay: anime.stagger(200), // increase delay by 100ms for each elements.
@@ -64,7 +64,7 @@ if (!x.matches) {
 
   setTimeout(function () {
     anime({
-      targets: ".nav .nav-link, .nav, .about-div ",
+      targets: ".nav .nav-link, .nav, .about-div, .darkmodeswitch ",
       translateY: "-100vh",
       delay: anime.stagger(100), // increase delay by 100ms for each elements.
     });
@@ -103,6 +103,31 @@ document.addEventListener("mousemove", (e) => {
   cursor.style.left = x + 0 + "px";
   cursor.style.top = y + 0 + "px";
 });
+
+var dark = true;
+
+const darkmode = () => {
+if (dark === true){
+  document.documentElement.style.setProperty('--main-color', '#081621');
+  document.documentElement.style.setProperty('--dark-color', '#E63946');
+  document.querySelector('.darkmode').style.bottom = '25px'
+  dark = false
+} else {
+  document.documentElement.style.setProperty('--main-color', '#E63946');
+  document.documentElement.style.setProperty('--dark-color', '#081621');
+  document.querySelector('.darkmode').style.bottom = '-25px'
+  dark = true
+}
+}
+
+document.querySelector('.darkmodeswitch').addEventListener('mouseenter', () => {
+
+  cursor.style.display = "none";
+})
+document.querySelector('.darkmodeswitch').addEventListener('mouseleave', () => {
+
+  cursor.style.display = "block";
+})
 
 const state = { active: "about", project: "" };
 
@@ -417,3 +442,5 @@ const switchProject = (e) => {
 
   }
 };
+
+

@@ -35,6 +35,13 @@ body {
   scroll-behavior: smooth;
   text-rendering: optimizeSpeed;
   line-height: 1.5;
+
+
+  user-select: none; /* supported by Chrome and Opera */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
 }
 
 /* Remove list styles on ul, ol elements with a class attribute */
@@ -84,7 +91,58 @@ select {
 :root{
     --main-color: #E63946;
     --second-color: #F6F6E9;
+    --dark-color: #081621;
+    --blue-color: #005792;
 }
+
+
+.darkmodeswitch {
+  background-color: var(--second-color);
+  width: 50px;
+  height: 100px;
+  position: fixed;
+  bottom: -100vh;
+  left: 0px;
+  border-radius: 50px;
+  cursor: pointer;
+  background-color: var(--main-color) ;
+  border: 1px solid var(--second-color);
+  transition: 0.1s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+.darkmodeswitch:hover {
+
+  border: 20px solid var(--second-color);
+
+ 
+
+}
+
+
+
+.darkmode {
+  background-color: var(--main-color);
+  width: 30px;
+  height: 30px;
+  position: relative;
+  bottom: -25px;
+  border-radius: 50px;
+  border: 1px solid var(--second-color);
+  transition: 0.1s ease-in;
+  
+
+}
+
+
+
+
+
+
+
+
 
 html{
   overflow-y: hidden;
@@ -545,8 +603,10 @@ a{
 
   .switch{
     position: absolute;
-    left: 35px;
-    top: 0;
+    left: 25px;
+    top: 15px;
+    text-align: center;
+    z-index: -2;
     
 
 
@@ -642,7 +702,7 @@ a{
   button:focus{
     
     outline: none;
-    height: 20px;
+ 
   }
 
   textarea:focus, input:focus{
