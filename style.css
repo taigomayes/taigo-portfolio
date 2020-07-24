@@ -90,7 +90,7 @@ body {
   background-color: var(--main-color);
   font-family: sofia-pro, sans-serif;
   color: var(--second-color);
- /*  overflow-y: hidden; */
+  overflow-y: hidden;
 
 }
 
