@@ -88,6 +88,7 @@ select {
 
 html{
   overflow-y: hidden;
+  overflow-x: hidden;
 }
 body {
   background-color: var(--main-color);
@@ -95,7 +96,10 @@ body {
   color: var(--second-color);
   overflow-y: hidden;
   height: 100vh;
+  width: 100vw;
   position: relative;
+  overflow-y: hidden;
+  overflow-x: hidden;
 
 }
 
@@ -526,13 +530,14 @@ a{
   
 
   .project-switch{
-    position: fixed;
+    position: absolute;
     display: flex;
     align-items: center;
     justify-content: center;
-    bottom: -90vh;
+    bottom: calc(-100vh + 100px);
     cursor: pointer;
     width: 100vw;
+    left: calc(20vw);
     
     
    
@@ -691,6 +696,13 @@ form {
  
   }
 
+  .project-switch{
+
+    left: calc(100vw - 100px);
+    
+    
+   
+  }
 
 
 
