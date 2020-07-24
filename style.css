@@ -91,6 +91,7 @@ body {
   font-family: sofia-pro, sans-serif;
   color: var(--second-color);
   overflow-y: hidden;
+  height: 100vh;
 
 }
 
