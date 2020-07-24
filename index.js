@@ -1,21 +1,18 @@
-
-const cursor = document.getElementById('cursor');
-const project = document.querySelector('.project')
-const details = document.querySelector('.details')
-const box = document.querySelector('.box-1')
-const circle = document.getElementById('circle')
-
-
+const cursor = document.getElementById("cursor");
+const project = document.querySelector(".project");
+const details = document.querySelector(".details");
+const box = document.querySelector(".box-1");
+const circle = document.getElementById("circle");
 
 /* on load */
 
+const x = window.matchMedia("(max-width: 420px)");
 
+if (!x.matches) {
+  // If media query matches
+  
 
-const x = window.matchMedia("(max-width: 420px)")
-
-if (!x.matches) { // If media query matches
-
-anime({
+  anime({
     targets: "path",
     strokeDashoffset: [anime.setDashoffset, 0],
     easing: "easeInOutSine",
@@ -27,12 +24,10 @@ anime({
   setTimeout(function () {
     anime({
       targets: " .box-container .box-1",
-      translateY: '-100vh',
-   
+      translateY: "-100vh",
 
       delay: anime.stagger(200), // increase delay by 100ms for each elements.
     });
-
   }, 3000);
 
   var roundLogEl = document.querySelector(".loader");
@@ -46,43 +41,34 @@ anime({
     easing: "linear",
     round: 1, // Will round the animated value to 1 decimal
   });
-
 } else {
 
+  
+  anime({
+    targets: "path",
+    strokeDashoffset: [anime.setDashoffset, 0],
+    easing: "easeInOutSine",
+    duration: 1000,
+    delay: 500,
+    direction: "alternate",
+  });
+
+  setTimeout(function () {
     anime({
-        targets: "path",
-        strokeDashoffset: [anime.setDashoffset, 0],
-        easing: "easeInOutSine",
-        duration: 1000,
-        delay: 500,
-        direction: "alternate",
-        
-      });
+      targets: ".intro",
+      translateX: "-100vw",
 
+      delay: anime.stagger(200), // increase delay by 100ms for each elements.
+    });
+  }, 3000);
 
-
-      setTimeout(function () {
-        anime({
-          targets: ".intro",
-          translateX: '-100vw',
-          
-    
-          delay: anime.stagger(200), // increase delay by 100ms for each elements.
-        });
-    
-      }, 3000);
-
-
- 
-      setTimeout(function () {
-        
-        anime({
-        targets: '.nav .nav-link, .nav, .about-div ',
-        translateY: '-100vh',
-        delay: anime.stagger(100), // increase delay by 100ms for each elements.
-        });
-
-      }, 3000);
+  setTimeout(function () {
+    anime({
+      targets: ".nav .nav-link, .nav, .about-div ",
+      translateY: "-100vh",
+      delay: anime.stagger(100), // increase delay by 100ms for each elements.
+    });
+  }, 3000);
 
   /*       document.querySelector('.nav').style.right = '0'
         document.querySelector('.nav').style.height = '200px'
@@ -91,39 +77,25 @@ anime({
       
         document.querySelector('.nav').style.top = '216vw' */
 
-       
+  document.getElementById("home").style.display = "none";
 
-
-        document.getElementById('home').style.display = 'none'
-
-        const state = { active: 'about', project: 'lela'}
-
+  const state = { active: "about", project: "lela" };
 }
 
-
-
-
-
-
-
-
-
-
-box.addEventListener('mouseover', () =>{
+box.addEventListener("mouseover", () => {
   /* cursor.circle.fill = 'white' */
-circle.style.fill = 'white'
-})
+  circle.style.fill = "white";
+});
 
-box.addEventListener('mouseover', () =>{
+box.addEventListener("mouseover", () => {
   /* cursor.circle.fill = 'white' */
-circle.style.fill = 'white'
-})
+  circle.style.fill = "white";
+});
 
-box.addEventListener('mouseleave', () =>{
+box.addEventListener("mouseleave", () => {
   /* cursor.circle.fill = 'white' */
-circle.style.fill = 'transparent'
-})
-
+  circle.style.fill = "transparent";
+});
 
 document.addEventListener("mousemove", (e) => {
   var x = e.clientX;
@@ -132,33 +104,21 @@ document.addEventListener("mousemove", (e) => {
   cursor.style.top = y + 0 + "px";
 });
 
-
-
-
-
-
-const state = { active: 'about', project: 'none'}
-   
+const state = { active: "about", project: "" };
 
 const hide = (stuff) => {
+  if (stuff.id === "work") {
+    setTimeout(function () {
+      anime({
+        targets: ".project-switch",
+        translateY: "-100vh",
 
+        delay: anime.stagger(300), // increase delay by 100ms for each elements.
+      });
+    }, 500);
+  }
 
-
-if (stuff.id === 'work'){
-
-setTimeout( function() {
-  anime({
-    targets: '.project-switch' ,
-    translateY: '-100vh',
-  
-    delay: anime.stagger(300), // increase delay by 100ms for each elements.
-  });
-}, 500);
-
-}
-
-
-/* if (state.project === 'none'){
+  /* if (state.project === 'none'){
 
   setTimeout(function () {
     anime({
@@ -182,59 +142,60 @@ setTimeout( function() {
 
 }  */
 
-  cursor.style.display = 'none'
-
-  
+  cursor.style.display = "none";
 
   anime({
     targets: ".home, .home-div .box-1",
-    translateY: '100vh',
-    
-    delay: anime.stagger(200), // increase delay by 100ms for each elements.
-  });
-
-
-  
-
-  
-
-
-  const show = `.${stuff.id}`
-  state.active = stuff.id
-  console.log(state.active)
-  state.project = stuff.className
-  console.log(state)
-
-  setTimeout(function () {
-  anime({
-    targets: `${show}-div`,
-    translateY: '-100vh',
+    translateY: "100vh",
 
     delay: anime.stagger(200), // increase delay by 100ms for each elements.
   });
+
+  const show = `.${stuff.id}`;
+  state.active = stuff.id;
+  console.log(state.active);
+  
+  console.log(state);
+
+
+  if (state.active !== 'work' && state.project == ''){
+    state.project = 'lela';
+  } 
+  
+  else {
+    state.project = stuff.className;
+  }
+
+  setTimeout(function () {
+    anime({
+      targets: `${show}-div`,
+      translateY: "-100vh",
+
+      delay: anime.stagger(200), // increase delay by 100ms for each elements.
+    });
   }, 400);
 
   setTimeout(function () {
-  anime({
-    targets: '.nav, .nav .nav-link' ,
-    translateY: '-100vh',
-  
-    delay: anime.stagger(100), // increase delay by 100ms for each elements.
-  });
+    anime({
+      targets: ".nav, .nav .nav-link",
+      translateY: "-100vh",
+
+      delay: anime.stagger(100), // increase delay by 100ms for each elements.
+    });
   }, 400);
 
-
-
   setTimeout(function () {
-  anime({
-    targets: `#${state.project}`,
-    translateX: '120vw',
-  
-    delay: anime.stagger(00), // increase delay by 100ms for each elements.
-  });
+    anime({
+      targets: `#${state.project}`,
+      translateX: "120vw",
+
+      delay: anime.stagger(00), // increase delay by 100ms for each elements.
+    });
   }, 00);
 
-/*         setTimeout(function () {
+  
+
+  /*         setTimeout(function () {
   anime({
     targets: `${show}-box`,
     translateY: '-100vh',
@@ -242,222 +203,217 @@ setTimeout( function() {
     delay: anime.stagger(200), // increase delay by 100ms for each elements.
   });
   }, 400); */
-}
-
-
-
-
-
+};
 
 const home = () => {
+  console.log("home");
 
-console.log('home')
+  const show = `.${state.active}`;
+  console.log(state.active);
 
+  cursor.style.display = "block";
 
+  anime({
+    targets: ".project-switch",
+    translateY: "100vh",
 
-
-
-
-
-
-const show = `.${state.active}`
-console.log(state.active)
-
-cursor.style.display = 'block'
-
-
-
-anime({
-    targets: '.project-switch' ,
-    translateY: '100vh',
-  
     delay: anime.stagger(1000), // increase delay by 100ms for each elements.
   });
 
+  anime({
+    targets: `${show}-div`,
+    translateY: "100vh",
+    delay: anime.stagger(200), // increase delay by 100ms for each elements.
+  });
 
-anime({
-targets: `${show}-div`,
-translateY: '100vh',
-delay: anime.stagger(200), // increase delay by 100ms for each elements.
-});
-
-
-anime({
-targets: '.nav .nav-link, .nav',
-translateY: '100vh',
-delay: anime.stagger(100), // increase delay by 100ms for each elements.
-});
-
-
+  anime({
+    targets: ".nav .nav-link, .nav",
+    translateY: "100vh",
+    delay: anime.stagger(100), // increase delay by 100ms for each elements.
+  });
 
   anime({
     targets: `#${state.project}`,
-    translateX: '-120vw',
-  
+    translateX: "-120vw",
+
     delay: anime.stagger(00), // increase delay by 100ms for each elements.
   });
 
+  state.project = "";
 
-  state.project = ''
+  console.log(state);
 
-  console.log(state)
-
-
-/*     anime({
+  /*     anime({
 targets: `${show}-box`,
 translateX: '-100vw',
 delay: anime.stagger(200), // increase delay by 100ms for each elements.
 }); */
 
+  setTimeout(function () {
+    anime({
+      targets: ".home, .home-div .box-1",
+      translateY: "-100vh",
 
-
-setTimeout(function () {
-anime({
-targets: ".home, .home-div .box-1",
-translateY: '-100vh',
-
-delay: anime.stagger(200), // increase delay by 100ms for each elements.
-});
-}, 100);
+      delay: anime.stagger(200), // increase delay by 100ms for each elements.
+    });
+  }, 100);
 };
-
 
 const nav = (e) => {
-console.log(state.active)
-console.log(e.id)
-
-if (e.id === 'work' && state.active === 'work'){
-console.log('yes')
+  console.log(state.active + ' is active');
+  console.log(e.id + ' is e.id');
 
 
 
-
-} else if (e.id === 'work' && state.active !== 'work') {
-anime({
-    targets: '.project-switch' ,
-    translateY: '-100vh',
+  /* if work is active and work is clicked nothing happens */
+  if (e.id === "work" && state.active === "work") {
+    console.log("yes");
+  } 
+  /* if work is clicked and work is not active bring in switch 
+  hide active div bring in work div
   
-    delay: anime.stagger(1000), // increase delay by 100ms for each elements.
-  });
+  */
+  else if (e.id === "work" && state.active !== "work") {
+    anime({
+      targets: ".project-switch",
+      translateY: "-100vh",
 
-  anime({
-targets: `.${state.active}-div`,
-translateY: '100vh',
-delay: anime.stagger(200), // increase delay by 100ms for each elements.
-});
+      delay: anime.stagger(1000), // increase delay by 100ms for each elements.
+    });
 
-anime({
-targets: `.${e.id}-div`,
-translateY: '-100vh',
-delay: anime.stagger(200), // increase delay by 100ms for each elements.
-});
+    anime({
+      targets: `.${state.active}-div`,
+      translateY: "100vh",
+      delay: anime.stagger(200), // increase delay by 100ms for each elements.
+    });
 
-
-
-state.active = e.id
-
-}
-
-
-else { 
-
-  
-
-anime({
-    targets: '.project-switch' ,
-    translateY: '100vh',
-  
-    delay: anime.stagger(300), // increase delay by 100ms for each elements.
-  });
+    anime({
+      targets: `.${e.id}-div`,
+      translateY: "-100vh",
+      delay: anime.stagger(200), // increase delay by 100ms for each elements.
+    });
 
 
+    if (state.project === ''){
 
-anime({
-targets: `.${state.active}-div` ,
-translateY: '100vh',
-delay: anime.stagger(200), // increase delay by 100ms for each elements.
-});
+    anime({
+      targets: `#lela`,
+      translateX: "120vw",
+      easing: "linear",
 
-anime({
-targets: `.${e.id}-div`,
-translateY: '-100vh',
+      delay: anime.stagger(200), // increase delay by 100ms for each elements.
+      
+    });
+    state.project = "lela";
 
-delay: anime.stagger(200), // increase delay by 100ms for each elements.
-});
+  }
 
-state.active = e.id
+ 
+    state.active = e.id;
 
 
-}
 
+  } else {
+    anime({
+      targets: ".project-switch",
+      translateY: "100vh",
+
+      delay: anime.stagger(300), // increase delay by 100ms for each elements.
+    });
+
+    anime({
+      targets: `.${state.active}-div`,
+      translateY: "100vh",
+      delay: anime.stagger(200), // increase delay by 100ms for each elements.
+    });
+
+    anime({
+      targets: `.${e.id}-div`,
+      translateY: "-100vh",
+
+      delay: anime.stagger(200), // increase delay by 100ms for each elements.
+    });
+
+
+
+
+
+
+    state.active = e.id;
+  } 
 };
 
+const switchProject = (e) => {
+  console.log(state.project);
 
-
-
-const switchProject = (e) =>{
-console.log(state.project)
-
-
-
-if (state.project === 'lela'){
+  if (state.project === "lela") {
     anime({
-    targets: `#${state.project}`,
-    translateX: '-120vw',
-    easing: 'linear',
-  
-    delay: anime.stagger(200), // increase delay by 100ms for each elements.
-  });
+      targets: `#${state.project}`,
+      translateX: "-120vw",
+      easing: "linear",
 
-  anime({
-    targets: `#relayfy`,
-    translateX: '120vw',
-    easing: 'linear',
-  
-    delay: anime.stagger(200), // increase delay by 100ms for each elements.
-  });
+      delay: anime.stagger(200), // increase delay by 100ms for each elements.
+    });
 
-  state.project = 'relayfy'
-
-}  else if (state.project === 'relayfy'){
     anime({
-    targets: `#${state.project}`,
-    translateX: '-120vw',
-    easing: 'linear',
-  
-    delay: anime.stagger(200), // increase delay by 100ms for each elements.
-  });
+      targets: `#relayfy`,
+      translateX: "120vw",
+      easing: "linear",
 
-  anime({
-    targets: `#onesix`,
-    translateX: '120vw',
-    easing: 'linear',
-  
-    delay: anime.stagger(200), // increase delay by 100ms for each elements.
-  });
+      delay: anime.stagger(200), // increase delay by 100ms for each elements.
+    });
 
-  state.project = 'onesix'
-
-}  else if (state.project === 'onesix'){
+    state.project = "relayfy";
+  } else if (state.project === "relayfy") {
     anime({
-    targets: `#${state.project}`,
-    translateX: '-120vw',
-    easing: 'linear',
-  
-    delay: anime.stagger(200), // increase delay by 100ms for each elements.
-  });
+      targets: `#${state.project}`,
+      translateX: "-120vw",
+      easing: "linear",
 
-  anime({
-    targets: `#lela`,
-    translateX: '120vw',
-    easing: 'linear',
-  
-    delay: anime.stagger(200), // increase delay by 100ms for each elements.
-  });
+      delay: anime.stagger(200), // increase delay by 100ms for each elements.
+    });
 
-  state.project = 'lela'
+    anime({
+      targets: `#onesix`,
+      translateX: "120vw",
+      easing: "linear",
 
+      delay: anime.stagger(200), // increase delay by 100ms for each elements.
+    });
+
+    state.project = "onesix";
+  } else if (state.project === "onesix") {
+    anime({
+      targets: `#${state.project}`,
+      translateX: "-120vw",
+      easing: "linear",
+
+      delay: anime.stagger(200), // increase delay by 100ms for each elements.
+    });
+
+    
+
+    anime({
+      targets: `#lela`,
+      translateX: "120vw",
+      easing: "linear",
+
+      delay: anime.stagger(200), // increase delay by 100ms for each elements.
+    });
+
+    state.project = "lela";
+  } else {
+
+    anime({
+      targets: `#lela`,
+      translateX: "120vw",
+      easing: "linear",
+
+      delay: anime.stagger(200), // increase delay by 100ms for each elements.
+      
+    });
+    state.project = "lela";
+
+
+  }
 };
-};
-
-
