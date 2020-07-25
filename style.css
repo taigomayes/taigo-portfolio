@@ -623,6 +623,7 @@ a{
     width: 40vw;
     left: -110vw;
     top: 10vh;
+    
    
   }
 
@@ -733,7 +734,7 @@ form {
     left: 0;
     top: 100vh;
     width: 100vw;
-    height: 5vh;
+    height: 50px;
 
   }
 

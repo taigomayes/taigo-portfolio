@@ -129,6 +129,16 @@ document.querySelector('.darkmodeswitch').addEventListener('mouseleave', () => {
   cursor.style.display = "block";
 })
 
+
+/* circle.addEventListener('mouseenter', () => {
+
+  cursor.style.display = "none";
+})
+circle.addEventListener('mouseleave', () => {
+  circle.style.strokeDasharray = '0';
+  cursor.style.display = "block";
+}) */
+
 const state = { active: "about", project: "" };
 
 const hide = (stuff) => {
