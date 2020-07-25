@@ -6,7 +6,7 @@ const circle = document.getElementById("circle");
 const darkmodeswitch = document.querySelector('.darkmodeswitch')
 /* on load */
 
-const x = window.matchMedia("(max-width: 420px)");
+const x = window.matchMedia("(max-width: 1040px)");
 
 if (!x.matches) {
   // If media query matches
