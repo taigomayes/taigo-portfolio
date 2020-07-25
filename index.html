@@ -175,11 +175,12 @@
     <div class="contact-div">
      <!--  <h3 class="div-name">contact</h3> -->
         <div class="contact-box">
-            <form>
-                <label >name</label><input id="form" ></input>
-                <label  >email</label><input id="form" ></input>
-                <label  >message</label><textarea id="form" ></textarea>
-                <button>say hi</button>
+            <form action="contactform.php" method="post">
+                <label >name</label><input id="form" type="text" name="name"></input>
+                <label  >email</label><input id="form" type="text" name="mail"></input>
+                <label  >message</label><textarea id="form" type="text" name="message"></textarea>
+                <button type="submit" name="submit">say hi</button>
+
             </form>
           </div>
     </div>
